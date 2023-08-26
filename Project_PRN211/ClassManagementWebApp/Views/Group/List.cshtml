@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClassManagementWebApp.DataAccess.Group>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List of Class</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Class Name
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Lectuturer
+            </th>
+            <th>
+                Status
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.GroupId
+            </td>
+            <td>
+                @item.GroupName
+            </td>
+            <td>
+                @item.Subject.SubjectName
+            </td>
+            <td>
+                @item.Lecturer.LecturerName
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.GroupId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.GroupId  }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.GroupId  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
